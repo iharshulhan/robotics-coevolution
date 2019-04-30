@@ -123,7 +123,7 @@ def play_single_process(policy_1: SmallReactivePolicy, policy_2: SmallReactivePo
             scene.global_step()
             obs_1, rew_1, done, info = game_1.step(a_1)
             obs_2, rew_2, done, info = game_2.step(a_2)
-            game_1.render()
+            # game_1.render()
 
             score_1 += rew_1
             score_2 += rew_2
@@ -190,7 +190,7 @@ def open_server(server_name: str):
     :return: None
     """
     game = roboschool.gym_pong.PongSceneMultiplayer()
-    gameserver = roboschool.multiplayer.SharedMemoryServer(game, server_name, want_test_window=True)
+    gameserver = roboschool.multiplayer.SharedMemoryServer(game, server_name, want_test_window=False)
 
     gameserver.serve_forever()
 
